@@ -71,6 +71,9 @@ export async function createSubscription(
       .doc(userId)
       .update({
         activePlans: firestore.FieldValue.arrayRemove(subscription.plan.id),
+        // new API
+        // activePlans: firestore.FieldValue.arrayRemove(subscription.price.id),
+        // ????
       });
   }
 
