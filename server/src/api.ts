@@ -5,7 +5,7 @@ import cors from 'cors';
 import { auth } from './firebase';
 import { createStripeCheckoutSession } from './checkout';
 import { createPaymentIntent } from './payments';
-import { createSetupIntent, listPaymentMethods } from './customer';
+import { createSetupIntent, listPaymentMethods } from './customers';
 import { 
   cancelSubscription, 
   createSubscription, 
@@ -128,9 +128,9 @@ app.get(
  * Billing and Recurring Subscriptions
  */
 
-// Create a and charge new Subscription
+// Create and charge new Subscription
 app.post(
-  '/subscriptions/',
+  '/subscriptions',
   runAsync(async (req: Request, res: Response) => {
     const user = validateUser(req);
     const { plan, payment_method } = req.body;
@@ -141,7 +141,7 @@ app.post(
 
 // Get all subscriptions for a customer
 app.get(
-  '/subscriptions/',
+  '/subscriptions',
   runAsync(async (req: Request, res: Response) => {
     const user = validateUser(req);
     const subscriptions = await listSubscriptions(user.uid);

@@ -1,9 +1,9 @@
-import { stripe } from './';
+import { stripe } from '.';
 import { db } from './firebase';
 import Stripe from 'stripe';
 
 /**
- * Creates a SetupIntent used to save a credit card for later use
+ * Creates a SetupIntent, used to save a credit card for later use.
  */
 export async function createSetupIntent(userId: string) {
   const customer = await getOrCreateCustomer(userId);
@@ -33,9 +33,8 @@ export async function getOrCreateCustomer(userId: string, params?: Stripe.Custom
 
   const { stripeCustomerId, email } = userSnapshot.data();
 
-  // if missing stripeCustomerId, create it.
+  // if missing stripeCustomerId, create a new Customer in Stripe.
   if (!stripeCustomerId) {
-    // CREATE new customer
     const customer = await stripe.customers.create({
       email,
       metadata: {
