@@ -5,9 +5,13 @@ import cors from 'cors';
 import { auth } from './firebase';
 import { createStripeCheckoutSession } from './checkout';
 import { createPaymentIntent } from './payments';
-import { handleStripeWebhook } from './webhooks';
 import { createSetupIntent, listPaymentMethods } from './customer';
-import { cancelSubscription, createSubscription, listSubscriptions } from './billing';
+import { 
+  cancelSubscription, 
+  createSubscription, 
+  listSubscriptions 
+} from './billing';
+import { handleStripeWebhook } from './webhooks';
 
 ////// MIDDLEWARE  //////
 
@@ -79,7 +83,7 @@ app.post('/test', (req: Request, res: Response) => {
  * Checkouts
  */
  app.post(
-  '/checkouts/',
+  '/checkouts',
   runAsync(async ({ body }: Request, res: Response) => {
     res.send(await createStripeCheckoutSession(body.line_items));
   })
@@ -92,9 +96,7 @@ app.post('/test', (req: Request, res: Response) => {
 app.post(
   '/payments',
   runAsync(async ({ body }: Request, res: Response) => {
-    res.send(
-      await createPaymentIntent(body.amount)
-    );
+    res.send(await createPaymentIntent(body.amount));
   })
 );
 
@@ -114,7 +116,7 @@ app.post(
 
 // Retrieve all cards attached to a customer
 app.get(
-  'wallet',
+  '/wallet',
   runAsync(async (req: Request, res: Response) => {
     const user = validateUser(req);
     const wallet = await listPaymentMethods(user.uid);

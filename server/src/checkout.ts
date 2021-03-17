@@ -11,7 +11,7 @@ export async function createStripeCheckoutSession(
   // {
   //   name: 'T-shirt',
   //   description: 'Comfortable cottom t-shirt',
-  //   images: ['https://example.com/t-shirt.png'],
+  //   images: ['https://contents.mediadecathlon.com/p1188567/k$58c5d0cc162ea4530d4c62501005b600/run-dry-men-s-running-t-shirt-grey-print.jpg?&f=452x452'],
   //   amount: 500,
   //   currency: 'usd',
   //   quantity: 1
