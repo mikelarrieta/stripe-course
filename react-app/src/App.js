@@ -84,7 +84,9 @@ function App() {
 function Home() {
   return (
     <>
-      <h2>Stripe React + Node.js</h2>
+      <div class="well">
+        <h2>Stripe React + Node.js</h2>
+      </div>
     </>
   );
 }
