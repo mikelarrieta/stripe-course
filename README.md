@@ -5,7 +5,7 @@ Built following the [Fireship](https://fireship.io/)'s "Stripe Payments JavaScri
 ## Usage
 **Clone** the project using `git clone` command:
 ```bash
-git clone https://github.com/mikelarrieta/fireship-stripe-course.git
+git clone https://github.com/mikelarrieta/stripe-course.git
 ```
 
 To **install** the React.js application dependecies:
